@@ -83,7 +83,7 @@ describe('BankAccount', () => {
       const account = getBankAccount(initialBalance);
       await account.synchronizeBalance();
       const data = account.getBalance();
-      expect(data !== initialBalance).toBe(true);
+      expect(data !== initialBalance).toBeTruthy();
     } catch (error) {
       expect(error).toBeInstanceOf(SynchronizationFailedError);
     }
