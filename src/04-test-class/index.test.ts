@@ -70,9 +70,9 @@ describe('BankAccount', () => {
     const account = getBankAccount(0);
     return account.fetchBalance().then((data) => {
       if (data) {
-        expect(typeof data).toBe('number');
+        expect(data).toEqual(expect.any(Number));
       } else {
-        expect(typeof data).toBe('object');
+        expect(data).toBeNull();
       }
     });
   });
@@ -94,7 +94,7 @@ describe('BankAccount', () => {
       const account = getBankAccount(0);
       await account.synchronizeBalance();
       const data = account.getBalance();
-      expect(typeof data).toBe('number');
+      expect(data).toEqual(expect.any(Number));
     } catch (error) {
       expect(error).toBeInstanceOf(SynchronizationFailedError);
     }
